@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!--<!DOCTYPE html>
 <html>
     <title>PHP..</title>
     <head class="scores">LEADERBOARD</head>
@@ -8,4 +8,4 @@
         ?>
     </body>
     
-</html>
+</html>     -->
