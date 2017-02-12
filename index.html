@@ -9,13 +9,12 @@
     <div id = "player1">Player-1</div>
     <div id = "player2">Player-2</div>
     <div><button id="playbtn" onclick="play()" autofocus>PLAY</button><button id="leaderBoard">Go to leaderboard</button></div>
-      <div id="board" style="border-left:8px dotted border-color: #FFF; height: 87%; position: absolute; left: 50%; top: 13%;"></div>
+      <div id="board" style="border-left:8px dotted; border-color: #FFF; height: 87%; position: absolute; left: 50%; top: 13%;"></div>
     <form name = "plugger">
         <input type="hidden" name = "winn">
     </form>
       
     <script>
-<!-------------------------------------------------------------->
     
 var canvas = document.createElement("canvas");
 var ctx = canvas.getContext("2d");
@@ -23,9 +22,9 @@ canvas.width = 768;
 canvas.height = 532;
 document.body.appendChild(canvas);
 
-<!-------------------------------------------------------------->
 
-// Extending the Context to add a clear() function
+<!--Extending the Context to add a clear() function-->
+
 CanvasRenderingContext2D.prototype.clear = CanvasRenderingContext2D.prototype.clear || function (preserveTransform)
 {
     if (preserveTransform)
@@ -42,8 +41,7 @@ CanvasRenderingContext2D.prototype.clear = CanvasRenderingContext2D.prototype.cl
     {
       this.restore();
     }
-};
-<!--------------------------------------------------------------->
+}
 
 // Game objects
 var ball =
@@ -75,7 +73,8 @@ var p2 =
 
 document.getElementById('player1').innerHTML = p1.playerName;
 document.getElementById('player2').innerHTML = p2.playerName;
-<!------------------------------------------------------------->
+
+
 // Handle keyboard controls
 var keysDown = {};
 
@@ -87,9 +86,7 @@ addEventListener("keydown", function (e)
 addEventListener("keyup", function (e)
 {
   delete keysDown[e.keyCode];
-}, false);
-
-<!-------------------------------------------------------------->
+}, false)
 
 // Draw everything
 var render = function ()
@@ -132,11 +129,10 @@ var render = function ()
   {
     ctx.fillText("Press [PLAY] to start", 285, (canvas.height / 2) + 10);
   }
-};
+}
 
-<!----------------------------------------------------->
+<!--Reset the game-->
 
-// Reset the game
 var reset = function ()
 {
   isGameStarted = false;
