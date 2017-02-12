@@ -1,0 +1,88 @@
+body
+{
+    background-color: black;
+}
+
+#free
+{
+background-color: white;
+}
+      
+canvas
+{
+    border-style: dotted;
+   	width: 93.4%;
+    height: 87%;
+    left: 3%;
+    position: fixed;
+    top: 12%;
+   	border-style: dotted;
+   	border-width: thick;
+    border-width: 5%;
+    border-color: beige;
+    background-color: black; 
+}
+      
+#player1
+{
+    position: fixed;
+    left: 27%;
+    color: deepskyblue;
+    font-family: monospace;
+    font-size: 425%;
+    top: 2%;
+}
+
+#player2
+{
+    position: fixed;
+    left: 73.5%;
+    color: firebrick;
+    font-family: monospace;
+    font-size: 425%;
+    top: 2%;
+}
+
+#playbtn
+{
+    position: absolute;
+    left: 44%;
+    width: 180px;
+    height: 30px;
+    top: 2%;
+    background-color: #e6b120;
+    font-family: serif;
+    border-width: thin;
+    font-size: 18px;
+    vertical-align: middle;
+    color: black;
+}
+
+#leaderBoard
+{
+    position: absolute;
+    left: 44%;
+    width: 180px;
+    height: 30px;
+    top: 7%;
+    background-color: #e6b120;
+    font-family: serif;
+    border-width: thin;
+    font-size: 15px;
+    vertical-align: middle;
+    color: black;
+}
+
+#field
+{
+    border-style: dotted;
+    width: 93.4%;
+    height: 87%;
+    left: 3%;
+    position: fixed;
+    top: 12%;
+    border-style: dotted;
+    border-width: thick;
+    border-width: 5%;
+    color: white; 
+}

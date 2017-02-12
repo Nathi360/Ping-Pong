@@ -1,0 +1,169 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>
+            Player Two: Register
+        </title>
+        <link rel="stylesheet" type="text/css" href = "StylingA.css">
+        <a href="index.html? player1=stay"></a>
+            <script type="text/javascript">
+                
+                var joint;
+                
+                function validateForm()
+                {        
+                    var aore = document.dataForm.pTwoID.value;
+                    var bore = document.dataForm.pTwoName.value;
+                    var core = document.dataForm.pTwoSurname.value;
+                    var dore = document.dataForm.IDNum.value;
+                    var eore = document.dataForm.pTwoEmail.value;
+                    var fore = document.dataForm.pTwoPass.value;
+                    
+                    var x = document.getElementById("p2Email");
+                    var patt = /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$/;
+                    
+                    var check = document.getElementById('p2IDNum');
+                    var vouch = new RegExp('^[0-9]+$');
+                    var prev = "#" + document.plugger.winn.value + "#";
+                    var combo;
+                    
+                    if(aore == "")
+                    {
+                        document.getElementById('errorDiv').innerHTML = "Error: Player-ID cannot be empty";
+                        document.getElementById('p2ID').style.borderWidth = "3px";
+                        document.getElementById('p2ID').style.borderColor = "red";
+                        document.dataForm.pTwoID.focus();
+                        return false;   
+                    }
+                    else
+                    {
+                        document.getElementById('p2ID').style.borderWidth = "4px";
+                        document.getElementById('p2ID').style.borderColor = "green";
+                        joint = aore;
+                    }
+                    
+                    if(bore == "")
+                    {
+                        document.getElementById('errorDiv').innerHTML = "Error: Name cannot be empty";
+                        document.getElementById('p2Name').style.borderWidth = "3px";
+                        document.getElementById('p2Name').style.borderColor = "red";
+                        document.dataForm.pTwoName.focus();
+                        return false;   
+                    }
+                    else
+                    {
+                        document.getElementById('p2Name').style.borderWidth = "4px";
+                        document.getElementById('p2Name').style.borderColor = "green";
+                    }
+                    
+                    if(core == "")
+                    {//document.getElementById('errorDiv').innerHTML = "Validating..";
+                        document.getElementById('errorDiv').innerHTML = "Error: Surname cannot be empty";
+                        document.getElementById('p2Surname').style.borderWidth = "3px";
+                        document.getElementById('p2Surname').style.borderColor = "red";
+                        document.dataForm.pTwoSurname.focus();
+                        return false;
+                    }
+                    else
+                    {
+                        document.getElementById('p2Surname').style.borderWidth = "4px";
+                        document.getElementById('p2Surname').style.borderColor = "green";
+                    }
+                    
+                    if(dore == "")
+                    {
+                        document.getElementById('errorDiv').innerHTML = "Error: ID Number cannot be empty";
+                        document.getElementById('p2IDNum').style.borderWidth = "3px";
+                        document.getElementById('p2IDNum').style.borderColor = "red";
+                        document.dataForm.IDNum.focus();
+                        return false;
+                    }
+                    else if(!vouch.test(check.value))
+                    {
+                        document.getElementById('errorDiv').innerHTML = "Error: ID-Number should contain integers only.(Max: 13 digits)";
+                        return false;
+                    }
+                    else
+                    {
+                        document.getElementById('p2IDNum').style.borderWidth = "4px";
+                        document.getElementById('p2IDNum').style.borderColor = "green";
+                    }
+                    
+                    if(eore == "")
+                    {
+                        document.getElementById('errorDiv').innerHTML = "Error: Email cannot be empty";
+                        document.getElementById('p2Email').style.borderWidth = "3px";
+                        document.getElementById('p2Email').style.borderColor = "red";
+                        document.dataForm.pTwoEmail.focus();
+                        return false;
+                    }
+                    else if(!patt.test(x.value))
+                    {
+                        document.getElementById('errorDiv').innerHTML = "Error: Email format is invalid";
+                        return false;
+                    }
+                    else
+                    {
+                        document.getElementById('p2Email').style.borderWidth = "4px";
+                        document.getElementById('p2Email').style.borderColor = "green";
+                    }
+                    
+                    if(fore == "")
+                    {
+                        document.getElementById('errorDiv').innerHTML = "Error: Password cannot be empty";
+                        document.getElementById('p2Pass').style.borderWidth = "3px";
+                        document.getElementById('p2Pass').style.borderColor = "red";
+                        document.dataForm.pTwoPass.focus();
+                        return false;
+                    }
+                    else
+                    {
+                        document.getElementById('p2Pass').style.borderWidth = "4px";
+                        document.getElementById('p2Pass').style.borderColor = "green";
+                    }
+                    
+                    alert("Player-1: " + delineate(text));
+                    return true;
+                }
+            </script>
+    </head>
+    <body background = "6.jpg">
+        <p class = "Main">Player-2: Register</p>
+            <p class = "welcome">
+                Please enter your details below then click Validate. All fields are required.
+            </p>
+        <hr>
+            <form class = "Main" action="index.html" name="dataForm" method="get" autocomplete="off" onsubmit="return validateForm();" onchange="validateForm();">
+                <pre class = "fix">
+Player-ID   : <input type="text" name="pTwoID" id="p2ID" placeholder="Your-Player-ID" autofocus><br>
+Name        : <input type="text" name="pTwoName" id="p2Name" placeholder="Your-Name"><br>
+Surname     : <input type="text" name="pTwoSurname" id="p2Surname" placeholder="Your-Surname"><br>
+ID Number   : <input type="text" name="IDNum" id="p2IDNum" placeholder="ID-Number" maxlength="13"><br>
+Email       : <input type="email" name="pTwoEmail" id="p2Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" placeholder="address@email.com"><br>
+Password    : <input type="password" name="pTwoPass" id="p2Pass" placeholder="Password"><br>
+<input class = "ValButt" type="submit" value="Validate">
+                </pre>
+            </form>
+        <hr>
+        <div class = "errors" id="errorDiv">--Validation feedback will appear here--</div>
+        
+        <form name = "plugger" action="index.html" name="cognito" method="get">
+            <input type="hidden" name = "winn">
+        </form>
+        
+        <script language = "javascript">
+            
+            var locate = window.location;
+            document.plugger.winn.value = locate;
+            var text = document.plugger.winn.value;
+                
+            function delineate(loot)
+            {
+                lefty = loot.indexOf("=") + 1;
+                righty = loot.indexOf("&");
+                return (loot.substring(lefty, righty));
+            }
+            
+        </script>
+    </body>
+</html>

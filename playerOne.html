@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>
+            Player One: Register
+        </title>
+        <link rel="stylesheet" type="text/css" href = "StylingA.css">
+    </head>
+    <body background = "6.jpg">
+        <p class = "Main">Player-1: Register</p>
+            <p class = "welcome">
+                Please enter your details below then click Validate. All fields are required.
+            </p>
+        <hr>
+            <form class = "Main" name="formOne" action="playerTwo.html" autocomplete="off" method="get">
+                <pre class = "fix">
+Player-ID   : <input class="P1" type="text" name="pOneID" placeholder="Your-Player-ID" autofocus required><br>
+Name        : <input class="P1" type="text" name="pOneName" placeholder="Your-Name" required><br>
+Surname     : <input class="P1" type="text" name="pOneSurname" placeholder="Your-Surname" required><br>
+Email       : <input class="P1" type="email" name="pOneEmail" placeholder="address@email.com" required><br>
+Password    : <input class="P1" type="password" name="pOnePass" placeholder="Password" required><br>
+<input class = "ValButt" type="submit" value="Validate">
+                </pre>
+            </form>
+        <hr>
+        <div class = "errors">--Validation feedback will appear here--</div>
+    </body>
+</html>

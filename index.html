@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Pong</title>
+    <link rel="stylesheet" type="text/css" href="pingpong.css">
+  </head>
+  <body>
+    <div id = "player1">Player-1</div>
+    <div id = "player2">Player-2</div>
+    <div><button id="playbtn" onclick="play()" autofocus>PLAY</button><button id="leaderBoard">Go to leaderboard</button></div>
+      <div id="board" style="border-left:8px dotted border-color: #FFF; height: 87%; position: absolute; left: 50%; top: 13%;"></div>
+    <form name = "plugger">
+        <input type="hidden" name = "winn">
+    </form>
+      
+    <script>
+<!-------------------------------------------------------------->
+    
+var canvas = document.createElement("canvas");
+var ctx = canvas.getContext("2d");
+canvas.width = 768;
+canvas.height = 532;
+document.body.appendChild(canvas);
+
+<!-------------------------------------------------------------->
+
+// Extending the Context to add a clear() function
+CanvasRenderingContext2D.prototype.clear = CanvasRenderingContext2D.prototype.clear || function (preserveTransform)
+{
+    if (preserveTransform)
+    {
+      this.save();
+      this.setTransform(1, 0, 0, 1, 0, 0);
+    }
+    
+    this.beginPath();
+    this.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    this.closePath();
+
+    if (preserveTransform)
+    {
+      this.restore();
+    }
+};
+<!--------------------------------------------------------------->
+
+// Game objects
+var ball =
+{
+  size: 10
+}
+
+var p1 =
+{
+  width: 10,
+  height: 100,
+  x: 20,
+  y: (canvas.height - 100) / 2,
+  score: 0,
+  speed: 600,
+  playerName: "Jacob"
+}
+
+var p2 =
+{
+  width: 10,
+  height: 100,
+  x: canvas.width - 10 - 20,
+  y: (canvas.height - 100) / 2,
+  score: 0,
+  speed: 600,
+  playerName: "John"
+}
+
+document.getElementById('player1').innerHTML = p1.playerName;
+document.getElementById('player2').innerHTML = p2.playerName;
+<!------------------------------------------------------------->
+// Handle keyboard controls
+var keysDown = {};
+
+addEventListener("keydown", function (e)
+{
+  keysDown[e.keyCode] = true;
+}, false);
+
+addEventListener("keyup", function (e)
+{
+  delete keysDown[e.keyCode];
+}, false);
+
+<!-------------------------------------------------------------->
+
+// Draw everything
+var render = function ()
+{
+  // clear the canvas
+  ctx.clear();
+
+  //P1
+  ctx.fillStyle = "deepskyblue";
+  ctx.fillRect(p1.x, p1.y, p1.width, p1.height);
+    
+    //P2
+    ctx.fillStyle = "firebrick";
+    ctx.fillRect(p2.x, p2.y, p2.width, p2.height);
+
+  // ball
+  ctx.fillStyle = "#e6b120";
+  ctx.fillRect(ball.x, ball.y, ball.size, ball.size);
+
+  // Text options
+  ctx.fillStyle = "rgb(250, 250, 250)";
+  ctx.font = "60px Helvetica";
+  ctx.textAlign = "centre";
+  ctx.textBaseline = "top";
+
+  // P1 Score
+    ctx.fillStyle = "deepskyblue";
+    ctx.fillText(p1.score, 185, 0);
+
+  // P2 Score
+    ctx.fillStyle = "firebrick";
+    ctx.fillText(p2.score, canvas.width - 185 - 15, 0);
+
+  // Text options
+    ctx.fillStyle = "#FFF";
+    ctx.font = "20px Sans";
+
+  // Initial text
+  if (!isGameStarted)
+  {
+    ctx.fillText("Press [PLAY] to start", 285, (canvas.height / 2) + 10);
+  }
+};
+
+<!----------------------------------------------------->
+
+// Reset the game
+var reset = function ()
+{
+  isGameStarted = false;
+
+  ball.x = (canvas.width - ball.size) / 2;
+  ball.y = (canvas.height - ball.size) / 2;
+
+  ball.speedX = Math.random() > 0.5 ? 600 : -600;
+  ball.speedY = 0;
+}
+
+function play()
+{
+    isGameStarted = true;
+    main();
+}
+
+var locate = window.location;
+document.plugger.winn.value = locate;
+var text = document.plugger.winn.value;
+var text2 = text;
+                
+function delineate(loot)
+{
+    lefty = loot.indexOf("=") + 1;
+    righty = loot.indexOf("#");
+    return (loot.substring(lefty, righty));
+}
+    </script>
+    
+    <script src="update.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
